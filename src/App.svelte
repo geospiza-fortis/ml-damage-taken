@@ -1,26 +1,14 @@
 <script>
-  import Table from "./components/Table.svelte";
-  const jobs = ["beginner", "bowman", "magician", "warrior", "thief", "pirate"];
-  export let job = "beginner";
-
-  $: display = [["job", job]];
+  import Character from "./components/Character.svelte";
+  let char = {};
 </script>
 
 <main>
   <h1>Calculator</h1>
 
-  <h2>Character</h2>
+  <Character bind:this={char} />
 
-  <Table data={display} header={false} />
-
-  <h3>Input</h3>
-
-  <label for="job">job</label>
-  <select id="job" bind:value={job}>
-    {#each jobs as choice}
-      <option value={choice}>{choice}</option>
-    {/each}
-  </select>
+  {char.hp}
 </main>
 
 <style>
