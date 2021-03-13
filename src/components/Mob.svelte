@@ -19,7 +19,7 @@
   $: display = [
     ["level", level],
     ["weapon attack", watt],
-    ["magcic attack", matt],
+    ["magic attack", matt],
     ["weapon defense", wdef],
     ["magic defense", mdef],
     ["accuracy", acc],
