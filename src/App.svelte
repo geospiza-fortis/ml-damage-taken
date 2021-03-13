@@ -3,7 +3,7 @@
   const jobs = ["beginner", "bowman", "magician", "warrior", "thief", "pirate"];
   export let job = "beginner";
 
-  $: display = [["job", job]].map((row) => ({ key: row[0], value: row[1] }));
+  $: display = [["job", job]];
 </script>
 
 <main>
@@ -11,7 +11,7 @@
 
   <h2>Character</h2>
 
-  <Table data={display} />
+  <Table data={display} header={false} />
 
   <h3>Input</h3>
 

@@ -3,6 +3,7 @@
   export let data = [];
   export let paginationSize = null;
   export let columns = null;
+  export let header = true;
 
   $: columns = columns || (data.length > 0 && autoColumns(data));
   let idx = 0;
@@ -32,22 +33,28 @@
 
 <div>
   <table cellpadding="5">
-    <tr>
-      {#each columns as column}
-        <th>{column.name}</th>
+    {#if header}
+      <thead>
+        <tr>
+          {#each columns as column}
+            <th>{column.name}</th>
+          {/each}
+        </tr>
+      </thead>
+    {/if}
+    <tbody>
+      {#each chunked[idx] as row}
+        <tr>
+          {#each columns as column}
+            <td>
+              {#if column.html}
+                {@html column.format(row)}
+              {:else}{column.format(row)}{/if}
+            </td>
+          {/each}
+        </tr>
       {/each}
-    </tr>
-    {#each chunked[idx] as row}
-      <tr>
-        {#each columns as column}
-          <td>
-            {#if column.html}
-              {@html column.format(row)}
-            {:else}{column.format(row)}{/if}
-          </td>
-        {/each}
-      </tr>
-    {/each}
+    </tbody>
   </table>
   <div>
     {#if pages > 1}
