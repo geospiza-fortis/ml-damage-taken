@@ -138,4 +138,4 @@ for line in [l.strip() for l in text.split("\n")]:
         dict(job=cur.lower(), level=int(lhs.split()[-1]), pdd=int(rhs.split()[-1]))
     ]
 
-print(json.dumps(data, indent=2))
+json.dumps(data, indent=2)
