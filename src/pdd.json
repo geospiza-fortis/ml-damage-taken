@@ -1,0 +1,547 @@
+[
+  {
+    "job": "beginner",
+    "level": 1,
+    "pdd": 7
+  },
+  {
+    "job": "beginner",
+    "level": 5,
+    "pdd": 17
+  },
+  {
+    "job": "beginner",
+    "level": 8,
+    "pdd": 19
+  },
+  {
+    "job": "warrior",
+    "level": 10,
+    "pdd": 54
+  },
+  {
+    "job": "warrior",
+    "level": 12,
+    "pdd": 57
+  },
+  {
+    "job": "warrior",
+    "level": 15,
+    "pdd": 83
+  },
+  {
+    "job": "warrior",
+    "level": 20,
+    "pdd": 106
+  },
+  {
+    "job": "warrior",
+    "level": 22,
+    "pdd": 109
+  },
+  {
+    "job": "warrior",
+    "level": 25,
+    "pdd": 129
+  },
+  {
+    "job": "warrior",
+    "level": 30,
+    "pdd": 154
+  },
+  {
+    "job": "warrior",
+    "level": 35,
+    "pdd": 179
+  },
+  {
+    "job": "warrior",
+    "level": 40,
+    "pdd": 203
+  },
+  {
+    "job": "warrior",
+    "level": 47,
+    "pdd": 208
+  },
+  {
+    "job": "warrior",
+    "level": 50,
+    "pdd": 261
+  },
+  {
+    "job": "warrior",
+    "level": 55,
+    "pdd": 267
+  },
+  {
+    "job": "warrior",
+    "level": 60,
+    "pdd": 305
+  },
+  {
+    "job": "warrior",
+    "level": 65,
+    "pdd": 308
+  },
+  {
+    "job": "warrior",
+    "level": 70,
+    "pdd": 359
+  },
+  {
+    "job": "warrior",
+    "level": 75,
+    "pdd": 356
+  },
+  {
+    "job": "warrior",
+    "level": 80,
+    "pdd": 382
+  },
+  {
+    "job": "warrior",
+    "level": 85,
+    "pdd": 388
+  },
+  {
+    "job": "warrior",
+    "level": 90,
+    "pdd": 440
+  },
+  {
+    "job": "warrior",
+    "level": 95,
+    "pdd": 446
+  },
+  {
+    "job": "warrior",
+    "level": 100,
+    "pdd": 494
+  },
+  {
+    "job": "magician",
+    "level": 8,
+    "pdd": 25
+  },
+  {
+    "job": "magician",
+    "level": 10,
+    "pdd": 31
+  },
+  {
+    "job": "magician",
+    "level": 13,
+    "pdd": 40
+  },
+  {
+    "job": "magician",
+    "level": 15,
+    "pdd": 49
+  },
+  {
+    "job": "magician",
+    "level": 18,
+    "pdd": 54
+  },
+  {
+    "job": "magician",
+    "level": 20,
+    "pdd": 56
+  },
+  {
+    "job": "magician",
+    "level": 25,
+    "pdd": 60
+  },
+  {
+    "job": "magician",
+    "level": 28,
+    "pdd": 64
+  },
+  {
+    "job": "magician",
+    "level": 30,
+    "pdd": 75
+  },
+  {
+    "job": "magician",
+    "level": 33,
+    "pdd": 91
+  },
+  {
+    "job": "magician",
+    "level": 35,
+    "pdd": 98
+  },
+  {
+    "job": "magician",
+    "level": 40,
+    "pdd": 99
+  },
+  {
+    "job": "magician",
+    "level": 48,
+    "pdd": 107
+  },
+  {
+    "job": "magician",
+    "level": 50,
+    "pdd": 131
+  },
+  {
+    "job": "magician",
+    "level": 55,
+    "pdd": 134
+  },
+  {
+    "job": "magician",
+    "level": 58,
+    "pdd": 142
+  },
+  {
+    "job": "magician",
+    "level": 60,
+    "pdd": 159
+  },
+  {
+    "job": "magician",
+    "level": 65,
+    "pdd": 162
+  },
+  {
+    "job": "magician",
+    "level": 68,
+    "pdd": 170
+  },
+  {
+    "job": "magician",
+    "level": 70,
+    "pdd": 184
+  },
+  {
+    "job": "magician",
+    "level": 75,
+    "pdd": 190
+  },
+  {
+    "job": "magician",
+    "level": 78,
+    "pdd": 198
+  },
+  {
+    "job": "magician",
+    "level": 80,
+    "pdd": 212
+  },
+  {
+    "job": "magician",
+    "level": 85,
+    "pdd": 218
+  },
+  {
+    "job": "magician",
+    "level": 88,
+    "pdd": 226
+  },
+  {
+    "job": "magician",
+    "level": 90,
+    "pdd": 240
+  },
+  {
+    "job": "magician",
+    "level": 95,
+    "pdd": 246
+  },
+  {
+    "job": "magician",
+    "level": 98,
+    "pdd": 254
+  },
+  {
+    "job": "magician",
+    "level": 100,
+    "pdd": 266
+  },
+  {
+    "job": "archer",
+    "level": 10,
+    "pdd": 32
+  },
+  {
+    "job": "archer",
+    "level": 15,
+    "pdd": 49
+  },
+  {
+    "job": "archer",
+    "level": 20,
+    "pdd": 65
+  },
+  {
+    "job": "archer",
+    "level": 25,
+    "pdd": 80
+  },
+  {
+    "job": "archer",
+    "level": 30,
+    "pdd": 95
+  },
+  {
+    "job": "archer",
+    "level": 35,
+    "pdd": 110
+  },
+  {
+    "job": "archer",
+    "level": 40,
+    "pdd": 125
+  },
+  {
+    "job": "archer",
+    "level": 50,
+    "pdd": 145
+  },
+  {
+    "job": "archer",
+    "level": 55,
+    "pdd": 148
+  },
+  {
+    "job": "archer",
+    "level": 60,
+    "pdd": 177
+  },
+  {
+    "job": "archer",
+    "level": 65,
+    "pdd": 180
+  },
+  {
+    "job": "archer",
+    "level": 70,
+    "pdd": 206
+  },
+  {
+    "job": "archer",
+    "level": 75,
+    "pdd": 212
+  },
+  {
+    "job": "archer",
+    "level": 80,
+    "pdd": 238
+  },
+  {
+    "job": "archer",
+    "level": 85,
+    "pdd": 244
+  },
+  {
+    "job": "archer",
+    "level": 90,
+    "pdd": 270
+  },
+  {
+    "job": "archer",
+    "level": 95,
+    "pdd": 276
+  },
+  {
+    "job": "archer",
+    "level": 100,
+    "pdd": 298
+  },
+  {
+    "job": "thief",
+    "level": 10,
+    "pdd": 42
+  },
+  {
+    "job": "thief",
+    "level": 15,
+    "pdd": 60
+  },
+  {
+    "job": "thief",
+    "level": 20,
+    "pdd": 76
+  },
+  {
+    "job": "thief",
+    "level": 22,
+    "pdd": 85
+  },
+  {
+    "job": "thief",
+    "level": 25,
+    "pdd": 100
+  },
+  {
+    "job": "thief",
+    "level": 30,
+    "pdd": 115
+  },
+  {
+    "job": "thief",
+    "level": 32,
+    "pdd": 116
+  },
+  {
+    "job": "thief",
+    "level": 35,
+    "pdd": 131
+  },
+  {
+    "job": "thief",
+    "level": 37,
+    "pdd": 132
+  },
+  {
+    "job": "thief",
+    "level": 40,
+    "pdd": 147
+  },
+  {
+    "job": "thief",
+    "level": 50,
+    "pdd": 184
+  },
+  {
+    "job": "thief",
+    "level": 55,
+    "pdd": 187
+  },
+  {
+    "job": "thief",
+    "level": 60,
+    "pdd": 220
+  },
+  {
+    "job": "thief",
+    "level": 65,
+    "pdd": 223
+  },
+  {
+    "job": "thief",
+    "level": 70,
+    "pdd": 257
+  },
+  {
+    "job": "thief",
+    "level": 75,
+    "pdd": 263
+  },
+  {
+    "job": "thief",
+    "level": 80,
+    "pdd": 291
+  },
+  {
+    "job": "thief",
+    "level": 85,
+    "pdd": 297
+  },
+  {
+    "job": "thief",
+    "level": 90,
+    "pdd": 325
+  },
+  {
+    "job": "thief",
+    "level": 95,
+    "pdd": 331
+  },
+  {
+    "job": "thief",
+    "level": 100,
+    "pdd": 331
+  },
+  {
+    "job": "pirate",
+    "level": 10,
+    "pdd": 24
+  },
+  {
+    "job": "pirate",
+    "level": 15,
+    "pdd": 43
+  },
+  {
+    "job": "pirate",
+    "level": 20,
+    "pdd": 56
+  },
+  {
+    "job": "pirate",
+    "level": 25,
+    "pdd": 69
+  },
+  {
+    "job": "pirate",
+    "level": 30,
+    "pdd": 82
+  },
+  {
+    "job": "pirate",
+    "level": 35,
+    "pdd": 95
+  },
+  {
+    "job": "pirate",
+    "level": 40,
+    "pdd": 108
+  },
+  {
+    "job": "pirate",
+    "level": 50,
+    "pdd": 146
+  },
+  {
+    "job": "pirate",
+    "level": 55,
+    "pdd": 149
+  },
+  {
+    "job": "pirate",
+    "level": 60,
+    "pdd": 178
+  },
+  {
+    "job": "pirate",
+    "level": 65,
+    "pdd": 181
+  },
+  {
+    "job": "pirate",
+    "level": 70,
+    "pdd": 207
+  },
+  {
+    "job": "pirate",
+    "level": 75,
+    "pdd": 213
+  },
+  {
+    "job": "pirate",
+    "level": 80,
+    "pdd": 239
+  },
+  {
+    "job": "pirate",
+    "level": 85,
+    "pdd": 245
+  },
+  {
+    "job": "pirate",
+    "level": 90,
+    "pdd": 271
+  },
+  {
+    "job": "pirate",
+    "level": 100,
+    "pdd": 309
+  }
+]

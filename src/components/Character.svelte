@@ -10,13 +10,15 @@
   export let job = "beginner";
   export let level = 140;
   export let hp = 30000;
-  export let avoidability = 45;
+  export let avoid = 45;
+  export let wdef = 100;
 
   $: display = [
     ["job", job],
     ["level", level],
     ["hp", hp],
-    ["avoidability", avoidability],
+    ["avoidability", avoid],
+    ["weapon defense", wdef],
   ];
 </script>
 
