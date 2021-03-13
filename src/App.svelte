@@ -5,7 +5,8 @@
   import pddData from "./pdd.json";
   import "bootstrap/dist/css/bootstrap-grid.min.css";
 
-  let ch = {};
+  import { job, level, hp, avoid, wdef, base } from "./store.js";
+
   let mob = {};
   function clip(value, min, max) {
     return Math.min(Math.max(value, min), max);
@@ -17,35 +18,36 @@
       : clip(1 - dodge, 0.02, 0.8);
   }
 
-  $: avoid = ch.level >= mob.level ? ch.avoid : (mob.level - ch.level) / 2;
-  $: dodge = avoid / (4.5 * mob.acc);
-  $: hit = hitPercentage(ch.job, dodge);
-  $: mdodge = 10 / 9 - mob.acc / (0.9 * avoid);
-  $: mhit = hitPercentage(ch.job, mdodge);
+  // avoidability specific to a mob
+  $: avoid_mob = $level >= mob.level ? $avoid : (mob.level - $level) / 2;
+  $: dodge = avoid_mob / (4.5 * mob.acc);
+  $: hit = hitPercentage($job, dodge);
+  $: mdodge = 10 / 9 - mob.acc / (0.9 * avoid_mob);
+  $: mhit = hitPercentage($job, mdodge);
   $: _pdd = pddData
-    .filter((row) => row.job == ch.job)
+    .filter((row) => row.job == $job)
     .reverse()
-    .find((row) => ch.level >= row.level);
+    .find((row) => $level >= row.level);
   $: pdd = _pdd && !_pdd.length ? _pdd.pdd : 0;
 
-  $: d = ch.level >= mob.level ? 13 / (13 + ch.level - mob.level) : 1.3;
+  $: d = $level >= mob.level ? 13 / (13 + $level - mob.level) : 1.3;
   // TODO: function of str/dex/int/luk
   $: c = 1;
   $: b =
-    ch.wdef >= pdd
-      ? (c * 28) / 45 + (ch.level * 7) / 13000 + 0.196
-      : d * (c + ch.level / 550 + 0.28);
+    $wdef >= pdd
+      ? (c * 28) / 45 + ($level * 7) / 13000 + 0.196
+      : d * (c + $level / 550 + 0.28);
   $: a = c + 0.28;
 
   // variance should be rand(0.008, 0.0085), presumably uniform
   $: dealDamage = (variance) =>
-    Math.pow(mob.watt, 2) * variance - ch.wdef * a - (ch.wdef - pdd) * b;
+    Math.pow(mob.watt, 2) * variance - $wdef * a - ($wdef - pdd) * b;
 
   $: minDamage = dealDamage(0.008);
   $: maxDamage = dealDamage(0.0085);
 
   $: display = [
-    ["avoidability", avoid],
+    ["avoidability", avoid_mob],
     ["physical dodge", dodge],
     ["physical hit", hit],
     ["magic dodge", mdodge],
@@ -62,7 +64,7 @@
   <div class="row">
     <div class="col-sm">
       <!--h2 character data-->
-      <Character bind:this={ch} />
+      <Character />
     </div>
     <div class="col-sm">
       <!--h2 mob data-->
