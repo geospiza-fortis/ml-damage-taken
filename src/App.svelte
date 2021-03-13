@@ -3,6 +3,7 @@
   import Character from "./components/Character.svelte";
   import Mob from "./components/Mob.svelte";
   import pddData from "./pdd.json";
+  import "bootstrap/dist/css/bootstrap-grid.min.css";
 
   let ch = {};
   let mob = {};
@@ -56,16 +57,22 @@
 </script>
 
 <main>
-  <h1>Calculator</h1>
+  <h1>Damage Recieved Calculator</h1>
 
-  <!--h2 character data-->
-  <Character bind:this={ch} />
-
-  <!--h2 mob data-->
-  <Mob bind:this={mob} />
-
-  <h2>Calculations</h2>
-  <Table data={display} header={false} />
+  <div class="row">
+    <div class="col-sm">
+      <!--h2 character data-->
+      <Character bind:this={ch} />
+    </div>
+    <div class="col-sm">
+      <!--h2 mob data-->
+      <Mob bind:this={mob} />
+    </div>
+    <div class="col-sm">
+      <h2>Calculations</h2>
+      <Table data={display} header={false} />
+    </div>
+  </div>
 </main>
 
 <style>
