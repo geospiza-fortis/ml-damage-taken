@@ -32,7 +32,12 @@
 
   $: d = $level >= mob.level ? 13 / (13 + $level - mob.level) : 1.3;
   // TODO: function of str/dex/int/luk
-  $: c = 1;
+  $: c =
+    ($job == "warrior"
+      ? $base.str / 2800 + $base.dex / 3200
+      : $base.str / 2000 + $base.dex / 2800) +
+    $base.int / 7200 +
+    $base.luk / 3200;
   $: b =
     $wdef >= pdd
       ? (c * 28) / 45 + ($level * 7) / 13000 + 0.196

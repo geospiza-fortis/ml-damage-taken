@@ -1,12 +1,31 @@
 <svelte:options accessors={true} />
 
 <script context="module">
-  const jobs = ["beginner", "bowman", "magician", "warrior", "thief", "pirate"];
+  const jobs = [
+    "beginner",
+    "bowman",
+    "magician",
+    "warrior",
+    "thief",
+    "gunslinger",
+    "brawler",
+  ];
 </script>
 
 <script>
   import Table from "./Table.svelte";
   import { job, level, hp, avoid, wdef, base } from "../store.js";
+
+  function calculateAvoid(job, base, level) {
+    if ((job == "gunslinger" || job == "brawler") && level >= 30) {
+      return job == "gunslinger"
+        ? base.dex * 0.125 + base.luk * 0.5
+        : base.dex * 0.25 + base.str * 0.225;
+    } else {
+      return base.dex * 0.25 + base.luk * 0.5;
+    }
+  }
+  $: $avoid = calculateAvoid($job, $base, $level);
 
   $: display = [
     ["job", $job],
