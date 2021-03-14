@@ -5,7 +5,17 @@
   import pddData from "./pdd.json";
   import "bootstrap/dist/css/bootstrap-grid.min.css";
 
-  import { job, level, avoid, wdef, mdef, base } from "./store.js";
+  import {
+    job,
+    level,
+    avoid,
+    wdef,
+    mdef,
+    str,
+    dex,
+    luk,
+    int,
+  } from "./store.js";
 
   let mob = {};
   function clip(value, min, max) {
@@ -34,10 +44,10 @@
   // TODO: function of str/dex/int/luk
   $: c =
     ($job == "warrior"
-      ? $base.str / 2800 + $base.dex / 3200
-      : $base.str / 2000 + $base.dex / 2800) +
-    $base.int / 7200 +
-    $base.luk / 3200;
+      ? $str / 2800 + $dex / 3200
+      : $str / 2000 + $dex / 2800) +
+    $int / 7200 +
+    $luk / 3200;
   $: b =
     $wdef >= pdd
       ? (c * 28) / 45 + ($level * 7) / 13000 + 0.196
@@ -49,10 +59,7 @@
     Math.pow(mob.watt, 2) * variance - $wdef * a - ($wdef - pdd) * b;
   $: dealMagicDamage = (variance) =>
     Math.pow(mob.matt, 2) * variance -
-    (($mdef + $base.int) / 4 +
-      $base.str / 28 +
-      $base.dex / 24 +
-      $base.luk / 20) *
+    (($mdef + $int) / 4 + $str / 28 + $dex / 24 + $luk / 20) *
       ($job == "magician" ? 1.2 : 1);
 
   $: display = [

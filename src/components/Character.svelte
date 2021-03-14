@@ -13,56 +13,59 @@
 </script>
 
 <script>
-  import { job, level, hp, avoid, wdef, mdef, base } from "../store.js";
-  import { sum, max } from "lodash";
+  import {
+    job,
+    level,
+    hp,
+    avoid,
+    wdef,
+    mdef,
+    str,
+    dex,
+    luk,
+    int,
+  } from "../store.js";
 
-  function calculateAvoid(job, base, level) {
+  function calculateAvoid(job, str, dex, luk, level) {
     if ((job == "gunslinger" || job == "brawler") && level >= 30) {
       return job == "gunslinger"
-        ? base.dex * 0.125 + base.luk * 0.5
-        : base.dex * 0.25 + base.str * 0.225;
+        ? dex * 0.125 + luk * 0.5
+        : dex * 0.25 + str * 0.225;
     } else {
-      return base.dex * 0.25 + base.luk * 0.5;
+      return dex * 0.25 + luk * 0.5;
     }
   }
 
-  // find the highest stat that isn't the primary stat
-  function maxStat(base) {
-    return max(Object.entries(base), ([_, value]) => value)[0];
-  }
-
-  function satisfyStats(base, ap) {
-    for (let key of Object.keys(base)) {
-      base[key] = Math.max(4, base[key]);
+  function satisfy(job, ap, str, dex, luk, int) {
+    let total = str + dex + luk + int;
+    let result = [str, dex, luk, int];
+    if (total > ap) {
+      // remove AP from the the bucket with the most values
+      let excess = total - ap;
+      // https://stackoverflow.com/a/11301464
+      let i = result.indexOf(Math.max(...result));
+      result[i] -= excess;
+    } else if (total < ap) {
+      let excess = ap - total;
+      // add ap to the primary stat
+      // mapping to primary stat
+      let mapping = {
+        warrior: 0,
+        brawler: 1,
+        bowman: 1,
+        gunslinger: 1,
+        thief: 2,
+        magician: 3,
+      };
+      result[mapping[job]] += excess;
     }
-
-    let total = sum(Object.values(base));
-    if (total <= ap) {
-      return base;
-    }
-
-    let excess = total - ap;
-    base[maxStat(base)] -= excess;
-    return base;
+    return result;
   }
 
   // check that we meet ap conditions
   $: ap = 25 + $level * 5 + ($level >= 70 ? 5 : 0) + ($level >= 120 ? 5 : 0);
-  // if there is more AP allocated than can fit into base stats, remove it from
-  // the stat that has the most allocated. All references to base need to happen
-  // in one line (or in a function) to quell the compiler
-  $: $base = satisfyStats({ ...$base }, ap);
-
-  $: $avoid = calculateAvoid($job, $base, $level);
-
-  $: display = [
-    ["job", $job],
-    ["level", $level],
-    ["hp", $hp],
-    ["avoidability", $avoid],
-    ["weapon defense", $wdef],
-    ...Object.entries($base),
-  ];
+  $: [$str, $dex, $luk, $int] = satisfy($job, ap, $str, $dex, $luk, $int);
+  $: $avoid = calculateAvoid($job, $str, $dex, $luk, $level);
 </script>
 
 <h2>Character</h2>
@@ -106,15 +109,38 @@
         <input type="range" min={10} max={1000} bind:value={$mdef} /></td
       >
     </tr>
-    {#each Object.keys($base) as key}
-      <tr>
-        <td>{key}</td>
-        <td
-          ><input type="number" min={4} max={1000} bind:value={$base[key]} />
-          <input type="range" min={4} max={1000} bind:value={$base[key]} /></td
-        >
-      </tr>
-    {/each}
+    <tr>
+      <td>ability points</td>
+      <td>{ap}</td>
+    </tr>
+    <tr>
+      <td>str</td>
+      <td
+        ><input type="number" min={4} max={ap - 12} bind:value={$str} />
+        <input type="range" min={4} max={ap - 12} bind:value={$str} /></td
+      >
+    </tr>
+    <tr>
+      <td>dex</td>
+      <td
+        ><input type="number" min={4} max={ap - 12} bind:value={$dex} />
+        <input type="range" min={4} max={ap - 12} bind:value={$dex} /></td
+      >
+    </tr>
+    <tr>
+      <td>luk</td>
+      <td
+        ><input type="number" min={4} max={ap - 12} bind:value={$luk} />
+        <input type="range" min={4} max={ap - 12} bind:value={$luk} /></td
+      >
+    </tr>
+    <tr>
+      <td>int</td>
+      <td
+        ><input type="number" min={4} max={ap - 12} bind:value={$int} />
+        <input type="range" min={4} max={ap - 12} bind:value={$int} /></td
+      >
+    </tr>
     <tr>
       <td>avoidability</td>
       <td>{$avoid}</td>
