@@ -49,7 +49,10 @@
     Math.pow(mob.watt, 2) * variance - $wdef * a - ($wdef - pdd) * b;
   $: dealMagicDamage = (variance) =>
     Math.pow(mob.matt, 2) * variance -
-    ($mdef / 4 + $base.str / 28 + $base.dex / 24 + $base.luk / 20) *
+    (($mdef + $base.int) / 4 +
+      $base.str / 28 +
+      $base.dex / 24 +
+      $base.luk / 20) *
       ($job == "magician" ? 1.2 : 1);
 
   $: display = [
@@ -59,10 +62,10 @@
     ["magic dodge", mdodge],
     ["magic hit", mhit],
     ["pdd", pdd],
-    ["min weapon damage taken", dealWeaponDamage(0.008)],
-    ["max weapon damage taken", dealWeaponDamage(0.0085)],
-    ["min magic damage taken", dealMagicDamage(0.0075)],
-    ["max magic damage taken", dealMagicDamage(0.008)],
+    ["weapon damage (min)", dealWeaponDamage(0.008)],
+    ["weapon damage (max)", dealWeaponDamage(0.0085)],
+    ["magic damage (min)", dealMagicDamage(0.0075)],
+    ["magic damage (max)", dealMagicDamage(0.008)],
   ].map(([key, value]) => [key, value % 1 === 0 ? value : value.toFixed(3)]);
 </script>
 
