@@ -51,6 +51,7 @@
       // mapping to primary stat
       let mapping = {
         warrior: 0,
+        beginner: 1,
         brawler: 1,
         bowman: 1,
         gunslinger: 1,
