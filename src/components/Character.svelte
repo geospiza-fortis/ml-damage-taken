@@ -13,8 +13,7 @@
 </script>
 
 <script>
-  import Table from "./Table.svelte";
-  import { job, level, hp, avoid, wdef, base } from "../store.js";
+  import { job, level, hp, avoid, wdef, mdef, base } from "../store.js";
 
   function calculateAvoid(job, base, level) {
     if ((job == "gunslinger" || job == "brawler") && level >= 30) {
@@ -38,10 +37,6 @@
 </script>
 
 <h2>Character</h2>
-
-<Table data={display} header={false} />
-
-<h3>Input</h3>
 
 <table cellpadding="5">
   <tbody>
@@ -68,6 +63,20 @@
         <input type="range" min={50} max={30000} bind:value={$hp} /></td
       >
     </tr>
+    <tr>
+      <td>weapon defense</td>
+      <td
+        ><input type="number" min={10} max={1000} bind:value={$wdef} />
+        <input type="range" min={10} max={1000} bind:value={$wdef} /></td
+      >
+    </tr>
+    <tr>
+      <td>magic defense</td>
+      <td
+        ><input type="number" min={10} max={1000} bind:value={$mdef} />
+        <input type="range" min={10} max={1000} bind:value={$mdef} /></td
+      >
+    </tr>
     {#each Object.keys($base) as key}
       <tr>
         <td>{key}</td>
@@ -77,6 +86,10 @@
         >
       </tr>
     {/each}
+    <tr>
+      <td>avoidability</td>
+      <td>{$avoid}</td>
+    </tr>
   </tbody>
 </table>
 

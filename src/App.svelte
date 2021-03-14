@@ -5,7 +5,7 @@
   import pddData from "./pdd.json";
   import "bootstrap/dist/css/bootstrap-grid.min.css";
 
-  import { job, level, avoid, wdef, base } from "./store.js";
+  import { job, level, avoid, wdef, mdef, base } from "./store.js";
 
   let mob = {};
   function clip(value, min, max) {
@@ -45,11 +45,12 @@
   $: a = c + 0.28;
 
   // variance should be rand(0.008, 0.0085), presumably uniform
-  $: dealDamage = (variance) =>
+  $: dealWeaponDamage = (variance) =>
     Math.pow(mob.watt, 2) * variance - $wdef * a - ($wdef - pdd) * b;
-
-  $: minDamage = dealDamage(0.008);
-  $: maxDamage = dealDamage(0.0085);
+  $: dealMagicDamage = (variance) =>
+    Math.pow(mob.matt, 2) * variance -
+    ($mdef / 4 + $base.str / 28 + $base.dex / 24 + $base.luk / 20) *
+      ($job == "magician" ? 1.2 : 1);
 
   $: display = [
     ["avoidability", avoid_mob],
@@ -58,9 +59,11 @@
     ["magic dodge", mdodge],
     ["magic hit", mhit],
     ["pdd", pdd],
-    ["min damage taken", minDamage],
-    ["max damage taken", maxDamage],
-  ];
+    ["min weapon damage taken", dealWeaponDamage(0.008)],
+    ["max weapon damage taken", dealWeaponDamage(0.0085)],
+    ["min magic damage taken", dealMagicDamage(0.0075)],
+    ["max magic damage taken", dealMagicDamage(0.008)],
+  ].map(([key, value]) => [key, value % 1 === 0 ? value : value.toFixed(3)]);
 </script>
 
 <main>
