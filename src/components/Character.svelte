@@ -14,6 +14,7 @@
 
 <script>
   import { job, level, hp, avoid, wdef, mdef, base } from "../store.js";
+  import { sum, max } from "lodash";
 
   function calculateAvoid(job, base, level) {
     if ((job == "gunslinger" || job == "brawler") && level >= 30) {
@@ -24,6 +25,34 @@
       return base.dex * 0.25 + base.luk * 0.5;
     }
   }
+
+  // find the highest stat that isn't the primary stat
+  function maxStat(base) {
+    return max(Object.entries(base), ([_, value]) => value)[0];
+  }
+
+  function satisfyStats(base, ap) {
+    for (let key of Object.keys(base)) {
+      base[key] = Math.max(4, base[key]);
+    }
+
+    let total = sum(Object.values(base));
+    if (total <= ap) {
+      return base;
+    }
+
+    let excess = total - ap;
+    base[maxStat(base)] -= excess;
+    return base;
+  }
+
+  // check that we meet ap conditions
+  $: ap = 25 + $level * 5 + ($level >= 70 ? 5 : 0) + ($level >= 120 ? 5 : 0);
+  // if there is more AP allocated than can fit into base stats, remove it from
+  // the stat that has the most allocated. All references to base need to happen
+  // in one line (or in a function) to quell the compiler
+  $: $base = satisfyStats({ ...$base }, ap);
+
   $: $avoid = calculateAvoid($job, $base, $level);
 
   $: display = [
