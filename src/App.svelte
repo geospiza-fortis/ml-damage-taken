@@ -5,7 +5,7 @@
   import pddData from "./pdd.json";
   import "bootstrap/dist/css/bootstrap-grid.min.css";
 
-  import { job, level, hp, avoid, wdef, base } from "./store.js";
+  import { job, level, avoid, wdef, base } from "./store.js";
 
   let mob = {};
   function clip(value, min, max) {
@@ -64,7 +64,7 @@
 </script>
 
 <main>
-  <h1>Damage Recieved Calculator</h1>
+  <h1>Damage Taken Calculator</h1>
 
   <div class="row">
     <div class="col-sm">

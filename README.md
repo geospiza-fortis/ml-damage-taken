@@ -1,6 +1,6 @@
-# ml-calc
+# ml-damage-taken
 
-Some components for plotting stat growths.
+Some components for plotting stat growths of damage taken.
 
 ## Get started
 
