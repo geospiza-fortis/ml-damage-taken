@@ -8,7 +8,7 @@
   let dealWeaponDamage;
   let dealMagicDamage;
 
-  function rand(min, max) {
+  function unif(min, max) {
     return Math.random() * (max - min) + min;
   }
 
@@ -21,15 +21,28 @@
     ];
   }
 
-  let samples = 10000;
-  let weapon_damage = [];
-  function sample() {
-    weapon_damage = [];
+  // e.g. sample(dealWeaponDamage, () => rand(0.008, 0.0085))
+  function sample(dealDamage, rand = () => 0.5, samples = 10000) {
+    let data = [];
     for (let i = 0; i < samples; i++) {
-      weapon_damage.push(dealWeaponDamage(rand(0.008, 0.0085)));
+      data.push(dealDamage(rand()));
     }
-    weapon_damage = [...weapon_damage];
+    return data;
   }
+
+  function sampleWeaponDamage() {
+    weapon_damage = sample(dealWeaponDamage, () => unif(0.008, 0.0085));
+  }
+
+  function sampleMagicDamage() {
+    magic_damage = sample(dealMagicDamage, () => unif(0.0075, 0.008));
+  }
+
+  let weapon_damage = [];
+  let magic_damage = [];
+  // initial plots
+  $: dealWeaponDamage && sampleWeaponDamage();
+  $: dealMagicDamage && sampleMagicDamage();
 </script>
 
 <main>
@@ -48,10 +61,11 @@
       <DamageTaken {mob} bind:dealWeaponDamage bind:dealMagicDamage />
     </div>
   </div>
+  <h2>Plots</h2>
+
   <div class="row">
-    <div class="col">
-      <h2>Plots</h2>
-      <button on:click={sample}>Sample and Plot</button>
+    <div class="col-md">
+      <button on:click={sampleWeaponDamage}>Resample and Plot</button>
 
       {#if weapon_damage.length}
         <Plot
@@ -59,6 +73,19 @@
           {transform}
           layout={{
             title: `histogram of weapon damage taken (n=${weapon_damage.length})`,
+          }}
+        />
+      {/if}
+    </div>
+    <div class="col-md">
+      <button on:click={sampleMagicDamage}>Resample and Plot</button>
+
+      {#if magic_damage.length}
+        <Plot
+          data={magic_damage}
+          {transform}
+          layout={{
+            title: `histogram of magic damage taken (n=${magic_damage.length})`,
           }}
         />
       {/if}
