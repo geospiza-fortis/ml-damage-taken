@@ -48,6 +48,17 @@
 <main>
   <h1>Damage Taken Calculator</h1>
 
+  <p>
+    Work in progress. The goal is to simulate auto-pet potion usage. Based on
+    damage formulas in <a
+      href="https://forum.maplelegends.com/index.php?threads/nises-formula-compilation.36234/"
+      >Nise's Formula Compilation</a
+    >. Source can be found on Github
+    <a href="https://github.com/geospiza-fortis/ml-damage-taken"
+      >geospiza-fortis/ml-damage-taken</a
+    >.
+  </p>
+
   <h2>Plots</h2>
 
   <div class="row">
