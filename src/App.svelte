@@ -48,19 +48,6 @@
 <main>
   <h1>Damage Taken Calculator</h1>
 
-  <div class="row">
-    <div class="col-sm">
-      <!--h2 character data-->
-      <Character />
-    </div>
-    <div class="col-sm">
-      <!--h2 mob data-->
-      <Mob bind:this={mob} />
-    </div>
-    <div class="col-sm">
-      <DamageTaken {mob} bind:dealWeaponDamage bind:dealMagicDamage />
-    </div>
-  </div>
   <h2>Plots</h2>
 
   <div class="row">
@@ -73,6 +60,7 @@
           {transform}
           layout={{
             title: `histogram of weapon damage taken (n=${weapon_damage.length})`,
+            height: 300,
           }}
         />
       {/if}
@@ -86,9 +74,24 @@
           {transform}
           layout={{
             title: `histogram of magic damage taken (n=${magic_damage.length})`,
+            height: 300,
           }}
         />
       {/if}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm">
+      <!--h2 character data-->
+      <Character />
+    </div>
+    <div class="col-sm">
+      <!--h2 mob data-->
+      <Mob bind:this={mob} />
+    </div>
+    <div class="col-sm">
+      <DamageTaken {mob} bind:dealWeaponDamage bind:dealMagicDamage />
     </div>
   </div>
 </main>
